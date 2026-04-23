@@ -1,33 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Startup de IA</title>
-</head>
-<body>
-    <h1>IA SERPROFES</h1>
-    <h2>¿Qué puede hacer mi Asistente IA por ti?</h2>
-<ul>
-    <li>Generar rutinas de 15 minutos personalizadas.</li>
-    <li>Calcular tus calorías diarias automáticamente.</li>
-    <li>Avisarte de cuándo beber agua durante el día.</li>
-</ul>
+<!doctype html>
+<html lang="es">
+    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi IA SaaS - Panel de Control</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<img src="ia.jfif" alt="Imagen de una IA" width="300">
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8U2v_dePeRST-a2Ylx1HCaF1zGRydUlrmOw&s" alt="Imagen de GPT" width="300">
-<!-- Salto de linea -->
-<br> 
-<!-- a href = Es el enlace web -->
-<a href="https://github.com/joscanoav/" target="_blank" >Visita mi perfil de GitHub</a> 
+  <body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-area">
+                <h2>IA Master</h2>
+            </div>
+            <nav class="menu-lateral">
+                <button>+ Nuevo Chat</button>
+                <div class="historial">
+                    <p>Historia reciente ...</p>
+                    <ul>
+                        <li>¿Cómo hacer dieta?</li>
+                        <li>Receta de pizza</li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="perfil">
+                <span>Usuario Pro</span>
+            </div>
+        </aside>
 
-<h2>Habla con la IA</h2>
-<form>
-    <label>Tu petición</label>
-    <input type="text" placeholder="Ej: Eres un experto en programación, generame un index.html responsive">
-    <button type="button">Enviar a la IA</button>
-</form>
+        <main class="chat-area">
+            
+            <header class="chat-header">
+                <h3>Conversación Actual</h3>
+            </header>
 
+            <section class="mensajes-container">
+                <div class="mensaje-ia">¡Hola! ¿En qué puedo ayudarte hoy?</div>
+            </section>
 
-</body>
+            <footer class="input-area">
+                <form class="chat-form">
+                    <input type="text" placeholder="Escribe tu pregunta aqui ...">
+                    <button type="submit">Enviar</button>
+                </form>
+            </footer>
+        </main>
+    </div>
+  </body>
 </html>
