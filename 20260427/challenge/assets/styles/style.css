@@ -10,7 +10,7 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 60px 50px 1fr 30px;
+  grid-template-rows: auto auto 1fr auto;
   grid-template-areas:
     "header"
     "nav"
@@ -25,10 +25,10 @@ header {
     grid-area: header;
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
     text-align: center;
-    padding-top: 12px;
-    font-size: 2rem;
+    padding: 15px 10px;
+    font-size: clamp(1.2rem, 4vw, 2rem);
     font-weight: 400;
-    letter-spacing: 8px;
+    letter-spacing: clamp(2px, 1vw, 8px);
     font-family: 'Georgia', 'Times New Roman', serif;
     color: #d4af37;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
@@ -40,7 +40,7 @@ header {
 nav {
     grid-area: nav;
     background: #252525;
-    padding: 10px 30px;
+    padding: 10px 15px;
     border-bottom: 2px solid #3a3a3a;
     display: flex;
     align-items: center;
@@ -51,7 +51,9 @@ nav ul {
     list-style: none;
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
 }
 
 nav li {
@@ -60,7 +62,7 @@ nav li {
 
 .nav-button {
     display: inline-block;
-    padding: 8px 25px;
+    padding: 8px 20px;
     text-decoration: none;
     color: #e0e0e0;
     background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
@@ -68,11 +70,12 @@ nav li {
     border-radius: 8px;
     text-align: center;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     position: relative;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 .nav-button::before {
@@ -106,16 +109,16 @@ nav li {
 /* 3. GALERÍA */
 .gallery {
     grid-area: gallery;
-    padding: 30px;
+    padding: 20px 15px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
     overflow-y: auto;
 }
 
 .gallery img {
     width: 100%;
-    height: 400px;
+    height: 350px;
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.6);
@@ -129,7 +132,7 @@ nav li {
 
 .portada img {
     grid-column: 1 / -1;
-    height: 500px;
+    height: clamp(300px, 50vw, 500px);
 }
 
 /* 4. FOOTER */
@@ -137,25 +140,86 @@ footer {
     grid-area: footer;
     background: #111;
     text-align: center;
-    padding-top: 8px;
-    font-size: 0.9rem;
+    padding: 10px 15px;
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
     color: #888;
     border-top: 2px solid #3a3a3a;
 }
 
 /* 5. RESPONSIVE */
+
+/* Tablets */
 @media (max-width: 768px) {
+    nav {
+        padding: 10px;
+    }
+    
     nav ul {
         gap: 10px;
     }
     
     .nav-button {
-        padding: 8px 20px;
-        font-size: 0.9rem;
+        padding: 7px 15px;
     }
     
     .gallery {
-        padding: 15px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        padding: 15px 10px;
         gap: 15px;
+    }
+    
+    .gallery img {
+        height: 280px;
+    }
+}
+
+/* Móviles grandes */
+@media (max-width: 480px) {
+    nav ul {
+        gap: 8px;
+    }
+    
+    .nav-button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .gallery {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        gap: 15px;
+    }
+    
+    .gallery img {
+        height: 250px;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 360px) {
+    header {
+        padding: 10px 5px;
+    }
+    
+    nav {
+        padding: 8px 5px;
+    }
+    
+    nav ul {
+        gap: 5px;
+    }
+    
+    .nav-button {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+    }
+    
+    .gallery {
+        padding: 8px;
+        gap: 10px;
+    }
+    
+    .gallery img {
+        height: 220px;
     }
 }
