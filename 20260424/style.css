@@ -1,86 +1,100 @@
-/* AGREGANDO STILOS A LAS TARJETAS */
+/* AGREGANDO ESTILOS A LAS TARJETAS */
+
 /* 1. RESETEO BASICO */
+/* El selector universal (*) aplica estos estilos a TODOS los elementos de la página. */
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    margin: 0; /* Quita los márgenes exteriores por defecto. */
+    padding: 0; /* Quita los rellenos interiores por defecto. */
+    box-sizing: border-box; /* Hace que el padding y el borde se incluyan en el ancho y alto total del elemento. */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Define la fuente para toda la web. */
 }
-
+ 
+/* Estilos para el cuerpo de la página. */
 body{
-    background-color: #F0F2F5;
-    padding: 50PX;
+    background-color: #f0f2f5; /* Un fondo gris claro para que las tarjetas blancas resalten. */
+    padding: 50px; /* Añade un espacio de 50px alrededor de todo el contenido. */
 }
-
-/* 2. REPASO FLEXBOX */
+ 
+/* 2. FLEXBOX */
+/* Estilos para el contenedor que envuelve a todas las tarjetas. */
 .contenedor-tarjetas{
-    display: flex;
-    justify-content: center;/*Tarjetas centren en la pantalla*/
-    gap: 40px; /*Separación perfecta entre tarjeta y tarjeta*/
-    margin-top: 40px;
+    display: flex; /* ¡La clave! Activa el modo Flexbox para los hijos directos (las tarjetas). */
+    justify-content: center; /* Centra las tarjetas horizontalmente en el contenedor. */
+    gap: 40px; /* Crea un espacio de 40px entre cada tarjeta. */
+    margin-top: 40px; /* Añade un margen superior para separarlo del título. */
 }
-
-/* DISEÑO BASE DE LA TARJETA */
+ 
+/* TARJETA BASE (Estilos que se aplican a TODAS las tarjetas) */
 .tarjeta{
-    background-color: white;
-    width: 320px;
-    padding: 40px 30px;
-    border-radius: 15px;
-    text-align: center;
-    /* Magia 1 : Sombra estatica suave */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    /* Magia 2 : Prepararemos la animación */
-    /* Si cambia de posicion o de sombra, que sea suavemente */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: white; /* Fondo blanco para la tarjeta. */
+    width: 320px; /* Ancho fijo para cada tarjeta. */
+    padding: 40px; /* Relleno interior para que el contenido no se pegue a los bordes. */
+    border-radius: 15px; /* Redondea las esquinas. */
+    text-align: center; /* Centra todo el texto dentro de la tarjeta. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Sombra sutil para un efecto de profundidad inicial. */
+    transition: all 0.3s ease; /* ¡Importante! Anima TODOS los cambios de propiedades (transform, box-shadow) durante 0.3s. */
 }
-/* 4. EL EFECTO WOW */
+
+/* HOVER GENERAL (Efecto al pasar el cursor sobre CUALQUIER tarjeta) */
 .tarjeta:hover{
-    /* Al pasar el raton la tarjeta flota 10px hacia arriba */
-    transform: translateY(-10px);
-    /* La sombra se hace mas grande y oscura */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px); /* Mueve la tarjeta 10px hacia arriba. */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); /* Aumenta la sombra para un efecto de "flotación" más pronunciado. */
 }
+
+/* TEXTOS (Estilos para la tipografía dentro de las tarjetas) */
 .tarjeta h3{
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 15px;
+    color: #333; /* Color de texto oscuro para el título. */
+    font-size: 24px; /* Tamaño del título. */
+    margin-bottom: 15px; /* Espacio debajo del título. */
 }
 
-.precio {
-    font-size: 36px;
-    font-weight: bold;
-    color: #2c3e50;
-    margin-bottom: 20px;
+.precio{
+    font-size: 35px; /* Tamaño grande para el precio. */
+    font-weight: bold; /* Texto en negrita. */
+    color: #374832; /* Color específico para el precio. */
+    margin-bottom: 20px; /* Espacio debajo del precio. */
 }
 
-.tarjeta p {
-    color: #666;
-    margin-bottom: 30px;
-    line-height: 1.6; /*Interlineado 1.6 veces el tamaño de la letra*/
+.tarjeta p{
+    color: #374832; /* Color para los párrafos de texto. */
+    margin-bottom: 30px; /* Espacio debajo de los párrafos. */
+    line-height: 1.6; /* Altura de línea para mejorar la legibilidad. */
 }
 
+/* BOTONES (Estilo para el botón por defecto) */
 .tarjeta button{
-    padding: 12px 30px;
-    border: none;
-    border-radius: 30px;
-    background-color: #ecf0f1;
-    color: #333;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease; /*Transicion suave de color*/
+    padding: 12px 30px; /* Relleno interior del botón. */
+    border: none; /* Quita el borde por defecto. */
+    border-radius: 30px; /* Esquinas muy redondeadas para un botón tipo "píldora". */
+    background-color: #ecf0f1; /* Color de fondo gris claro. */
+    color: #333; /* Color de texto oscuro. */
+    font-weight: bold; /* Texto en negrita. */
+    font-size: 16px; /* Tamaño de la fuente. */
+    cursor: pointer; /* Cambia el cursor a una mano para indicar que es clicable. */
+    transition: all 0.3s ease; /* Anima todos los cambios del botón (color, tamaño). */
 }
 
-.tarjeta .btn-destacado {
-    background-color: #3498db;
-    color: white;
-
-}
-
+/* Efecto hover para el botón por defecto. */
 .tarjeta button:hover{
-    background-color: #bdc3c7;
+    background-color: #d5dbdb; /* Oscurece ligeramente el fondo. */
+    transform: scale(1.05); /* Agranda el botón un 5% para un efecto "pop". */
 }
 
+/* BOTÓN PRO/PREMIUM (Estilo específico para los botones destacados) */
+.tarjeta .btn-destacado{
+    background-color: rgb(54, 86, 86); /* Color de fondo oscuro. */
+    color: white; /* Texto en blanco para que contraste. */
+}
+
+/* Efecto hover para los botones destacados. */
 .tarjeta .btn-destacado:hover{
-    background-color: #2980b9;
+    background-color: rgb(34, 60, 60); /* Un tono aún más oscuro al pasar el cursor. */
+}
+
+/* ⭐ SOLO PREMIUM → efecto especial en hover */
+/* Este selector es muy específico: se aplica SOLO cuando pasas el cursor sobre un elemento que tiene AMBAS clases: 'tarjeta' y 'premium'. */
+.tarjeta.premium:hover{
+    border: 2px solid #365656; /* Añade un borde de color oscuro. */
+    transform: translateY(-12px) scale(1.04); /* Lo mueve un poco más arriba y lo agranda un poco más que las otras tarjetas. */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12); /* Una sombra mucho más pronunciada para destacar al máximo. */
 }

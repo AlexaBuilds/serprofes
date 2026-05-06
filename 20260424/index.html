@@ -1,34 +1,59 @@
+<!-- Declaración del tipo de documento HTML5. -->
 <!DOCTYPE html>
+<!-- Elemento raíz de la página, configurado en inglés. -->
 <html lang="en">
-
 <head>
+    <!-- Codificación de caracteres estándar para compatibilidad. -->
     <meta charset="UTF-8">
+    <!-- Metaetiqueta esencial para que la página se adapte a diferentes tamaños de pantalla (diseño responsive). -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título que se muestra en la pestaña del navegador. -->
     <title>Tarjetas Premium Flexbox</title>
+    <!-- Enlace a la hoja de estilos CSS externa. -->
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-    <header style="text-align: center; margin-top: 20px;">
+    <!-- Encabezado de la página. El estilo en línea 'style="..."' es una forma de aplicar CSS directamente, aunque es mejor hacerlo en el archivo .css. -->
+    <header style="text-align: center; margin-top: 20px">
         <h2>Nuestros planes de IA</h2>
     </header>
 
+    <!-- 'main' es el contenedor principal del contenido más importante de la página. -->
+    <!-- La clase 'contenedor-tarjetas' será usada por Flexbox para alinear las tarjetas. -->
     <main class="contenedor-tarjetas">
+
+        <!-- La etiqueta 'article' es semánticamente correcta para un bloque de contenido independiente, como una tarjeta. -->
+        <!-- La clase 'tarjeta' aplica los estilos base a todas las tarjetas. -->
         <article class="tarjeta">
             <h3>Plan Básico</h3>
             <p class="precio">Gratis</p>
-            <p>Ideal para probar nuestra IA con 50 mesajes al dia.</p>
-            <button>Eligir Plan</button>
+            <p>Ideal para probar nuestra IA con 50 mensajes al dia</p>
+            <button>Elegir Plan</button>
         </article>
 
+        <!-- Segunda tarjeta. -->
         <article class="tarjeta">
             <h3>Plan Pro</h3>
             <p class="precio">15€ / mes</p>
-            <p>Mensajes ilimitados y respuestas rápidas.</p>
-            <button class="btn-destacado">Eligir Plan Pro</button>
+            <p>Ideal para usuarios avanzados que necesitan más capacidad</p>
+            <!-- La clase 'btn-destacado' aplica un estilo diferente a este botón. -->
+            <button class="btn-destacado">Elegir plan Pro</button>
         </article>
-    </main>
 
+        <!-- Tercera tarjeta. Tiene la clase base 'tarjeta' Y la clase específica 'premium'. -->
+        <!-- Esto permite que herede todos los estilos de 'tarjeta' y además tenga estilos únicos de 'premium'. -->
+        <article class="tarjeta premium">
+            <h3>Plan Premium</h3>
+            <p class="precio">30€ / mes</p>
+            <p>La mejor opción para uso profesional sin límites</p>
+
+            <!-- La etiqueta <strong> se usa para dar importancia semántica (y visual por defecto) al texto. -->
+            <p><strong>✔ Sin límites</strong></p>
+            <p><strong>✔ Soporte prioritario</strong></p>
+
+            <button class="btn-destacado">Elegir plan Premium</button>
+        </article>
+
+    </main>
 </body>
 </html>
