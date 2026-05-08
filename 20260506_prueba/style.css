@@ -1,0 +1,81 @@
+/* 1. Estilos para la página entera (el lienzo de fondo) */
+body {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    background-color: #f0f2f5;
+    margin: 0; 
+    font-family: sans-serif; 
+}
+
+/* 2. Estilos para la caja/ficha de presentación */
+.ficha-presentacion {
+    width: 300px; 
+    background-color: white; 
+    border: 1px solid #ddd; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px; 
+    text-align: center; 
+    
+    /* Prepara la ficha para una animación suave. */
+    transition: all 0.3s ease; 
+}
+
+/* Añadimos un efecto hover a la ficha. */
+.ficha-presentacion:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    transform: translateY(-12px) scale(1.04);
+    border-color: dodgerblue;
+}
+
+/* 3. Estilos para la imagen DENTRO de la ficha */
+.ficha-presentacion img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    
+    /* Preparamos la imagen para añadirle animación. */
+    transition: transform 0.3s ease;
+}
+
+/* Hacemos que la imagen reaccione. */
+/* Cuando el cursor esté sobre la FICHA, la IMAGEN que está dentro se agrandará. */
+.ficha-presentacion:hover img {
+    transform: scale(1.05);
+}
+
+/* 4. Estilos para el botón */
+.ficha-presentacion button {
+    width: 100%; 
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    
+    /* Prepara el botón para animar todos sus cambios. */
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover para el botón. */
+.ficha-presentacion button:hover {
+    background-color: #0056b3;
+    
+    /* Añade un efecto de escala para que el botón "salte". */
+    transform: scale(1.05);
+}
+
+/*5. EL SECRETO : RESPONSIVE DESIGN (Móviles)*/
+@media (max-width: 500px) {
+    .form-container {
+        width: 100%; /*Ocupa todo el ancho disponible del movil*/
+        padding: 20px; /*Reducimos los margenes internos*/
+    }
+    body {
+        background:#f0f2f5; /*Quitamos el efecto degradado para mejora rendimiento*/
+    }
+}
