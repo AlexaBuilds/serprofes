@@ -13,11 +13,12 @@
         <p class="instrucciones">
             Estoy pensando en un número del 1 al 10...
         </p>
-        <!-- Mostrar vidas dinámicamente (JS) -->
-        <h3 id="text-vidas">Vidas: 3 ♥️</h3>
-        <!-- campo donde el usuari escribe -->
+        <!-- CORREGIDO: El id ahora es "texto-vidas" para coincidir con el JS -->
+        <h3 id="texto-vidas">Vidas: 3 ❤️</h3>
+        <!-- campo donde el usuario escribe -->
         <input type="number" id="input-numero" placeholder="Tu número...">
-        <button id="btn-jugar" onclick="jugar()">
+        <!-- CORREGIDO: El onclick ahora llama a la función principal del juego -->
+        <button id="btn-jugar" onclick="comprobarNumero()">
             Probar suerte
         </button>
         <!-- Aquí aparecerán los mensajes del juego -->
