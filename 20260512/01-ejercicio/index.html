@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!-- El Doctype le dice al navegador que este es un documento HTML5, la versión moderna de HTML. -->
+<html lang="en">
+<head>
+    <!-- =================================================================== -->
+    <!-- CABECERA (HEAD): CONFIGURACIÓN Y CONEXIONES CON OTROS ARCHIVOS      -->
+    <!-- Aquí va información para el navegador, no se ve directamente en la página. -->
+    <!-- =================================================================== -->
+    
+    <meta charset="UTF-8"> <!-- Permite que se vean correctamente caracteres especiales como tildes o la 'ñ'. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que la página se vea bien en dispositivos móviles (diseño responsive). -->
+    <title>Fichas Técnicas</title> <!-- El título que aparece en la pestaña del navegador. -->
+
+    <!-- =================================================================== -->
+    <!-- CONEXIÓN CON LA HOJA DE ESTILOS (style.css)                         -->
+    <!-- Esta línea es la que le dice al HTML: "Usa las reglas de estilo que  -->
+    <!-- están definidas en el archivo 'style.css' para hacer la página bonita". -->
+    <!-- Clases como "tarjeta" o "etiqueta" que usamos más abajo, obtienen su  -->
+    <!-- diseño (colores, bordes, etc.) de ese archivo.                      -->
+    <!-- =================================================================== -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- =================================================================== -->
+    <!-- CONEXIÓN CON EL ARCHIVO JAVASCRIPT (script.js)                      -->
+    <!-- Esta línea conecta la lógica y la interactividad. Le dice al HTML:  -->
+    <!-- "Usa el código que está en 'script.js' para manipular esta página". -->
+    <!-- El atributo 'defer' es muy importante: le ordena al navegador que   -->
+    <!-- primero cargue todo el HTML y después ejecute el script. Esto evita -->
+    <!-- errores, asegurando que los elementos con 'id' ya existen antes de -->
+    <!-- que JavaScript intente encontrarlos.                                -->
+    <!-- =================================================================== -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- =================================================================== -->
+    <!-- CUERPO (BODY): EL CONTENIDO VISIBLE DE LA PÁGINA                     -->
+    <!-- Todo lo que pongas aquí es lo que el usuario verá en el navegador.  -->
+    <!-- =================================================================== -->
+
+    <!-- =================================================================== -->
+    <!-- TARJETA 1: PRODUCTOS                                                -->
+    <!-- Este bloque será rellenado por JavaScript en cuanto la página cargue. -->
+    <!-- =================================================================== -->
+    <div class="tarjeta"> <!-- La clase "tarjeta" le aplica los estilos definidos en style.css -->
+        <h2>🛒Productos</h2>
+        <p>
+            <span class="etiqueta">Nombre:</span>
+            <!-- El 'id="prod-nombre"' es el "anzuelo" que JavaScript usará. -->
+            <!-- La línea `document.getElementById("prod-nombre")` en script.js -->
+            <!-- buscará este span concreto para ponerle el nombre del producto. -->
+            <span id="prod-nombre">---</span>
+        </p>
+        
+        <p>
+            <span class="etiqueta">Precio:</span>
+            <!-- Lo mismo ocurre aquí. 'id="prod-precio"' es el objetivo para -->
+            <!-- que script.js inserte el precio del objeto 'producto'. -->
+            <span id="prod-precio">---</span>€
+        </p>
+    
+        <p>
+            <span class="etiqueta">Categoria:</span>
+            <!-- Y este es el objetivo para la categoría. Cada 'id' debe ser único. -->
+            <span id="prod-cat">---</span>
+        </p>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- TARJETA 2: MI FICHA                                                 -->
+    <!-- Este bloque se rellenará solo cuando el usuario haga clic en el botón. -->
+    <!-- =================================================================== -->
+    <div class="tarjeta">
+      <h2>🎓Mi Ficha</h2>
+        <p>
+            <span class="etiqueta">Alumno:</span>
+            <!-- Anzuelo para el nombre del alumno en script.js -->
+            <span id="alum-nombre">---</span>
+        </p>
+        
+        <p>
+            <span class="etiqueta">Edad:</span>
+            <!-- Anzuelo para la edad del alumno en script.js -->
+            <span id="alum-edad">---</span>
+        </p>
+    
+        <p>
+            <span class="etiqueta">Ciudad:</span>
+            <!-- Anzuelo para la ciudad del alumno en script.js -->
+            <span id="alum-ciudad">---</span>
+        </p>
+
+        <!-- =================================================================== -->
+        <!-- EL "DETONADOR" (TRIGGER)                                            -->
+        <!-- El atributo 'onclick' es la conexión directa con una función de JS. -->
+        <!-- Le dice al navegador: "Cuando alguien haga clic en este botón,     -->
+        <!-- busca en 'script.js' la función llamada 'mostrarMiFicha()' y       -->
+        <!-- ejecútala inmediatamente".                                         -->
+        <!-- =================================================================== -->
+        <button onclick="mostrarMiFicha()">Generar mi ficha</button>
+    </div>
+
+</body>
+</html>
