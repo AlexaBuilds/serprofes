@@ -14,3 +14,11 @@ function añadirAlCarrito(){
     //Limpiamos el input
     document.getElementById('nuevo-item').value = "";
 }
+
+//4. La función para eliminar artículos de la lista
+function eliminarDelCarrito(){
+    //MAGIA DE ARRAYS: .pop() elimina el elemento de la lista
+    carrito.pop();
+    //Volvemos a pintar la cesta para que se vea
+    document.getElementById('pantalla-cesta').textContent = carrito.join(" - ");
+}
