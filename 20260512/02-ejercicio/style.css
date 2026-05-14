@@ -1,62 +1,100 @@
+/* 
+    El selector universal (*) se aplica a TODOS los elementos de la página.
+    Lo usamos para hacer un "reset" básico, quitando los márgenes y rellenos
+    que los navegadores ponen por defecto. 'box-sizing: border-box;' es una regla
+    moderna que hace que los anchos y altos de las cajas sean más fáciles de calcular.
+*/
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Estilos para el cuerpo completo de la página */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 40px;
-    background: #f0f4f8;
-    display: flex;
-    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif; /* Tipo de letra principal */
+    padding: 40px; /* Espacio alrededor del contenido */
+    background: #f0f4f8; /* Un color de fondo suave */
+    display: flex; /* Activa el modelo de caja flexible (Flexbox) */
+    justify-content: center; /* Centra el contenido horizontalmente */
 }
 
+/* Estilos para el contenedor principal del ticket */
 .ticket {
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    width: 350px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: white; /* Fondo blanco */
+    padding: 30px; /* Espacio interior */
+    border-radius: 8px; /* Bordes redondeados */
+    width: 350px; /* Ancho fijo */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra para darle profundidad */
 }
+
+/* Estilo para el título del ticket */
 h2 {
-    text-align: center;
-    color: #333;
-    border-bottom: 2px dashed #ccc;
-    padding-bottom: 10px;
+    text-align: center; /* Texto centrado */
+    color: #333; /* Color de texto oscuro */
+    border-bottom: 2px dashed #ccc; /* Línea discontinua debajo */
+    padding-bottom: 10px; /* Espacio entre el texto y la línea */
 }
+
+/* Estilos para la lista de productos */
 ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
+    list-style: none; /* Quita los puntos de la lista */
+    padding: 0; /* Quita el relleno por defecto */
+    margin-bottom: 20px; /* Margen inferior para separarlo del botón */
 }
+
+/* Estilos para cada elemento (producto) de la lista */
 li {
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-    font-size: 1.1rem;
-    display: flex;
-    justify-content: space-between; 
+    padding: 10px 0; /* Espacio vertical */
+    border-bottom: 1px solid #eee; /* Línea fina para separar productos */
+    font-size: 1.1rem; /* Tamaño de letra */
+    display: flex; /* ¡Flexbox de nuevo! */
+    justify-content: space-between; /* Coloca el primer elemento a la izquierda y el último a la derecha */
 }
+
+/* Estilos para el botón */
 button {
-    background: #007acc;
-    color: white;
-    padding: 12px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    font-weight: bold;
+    background: #007acc; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 12px; /* Relleno interior */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Muestra una mano al pasar el ratón */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    font-size: 1.1rem; /* Tamaño de letra */
+    border-radius: 5px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
 }
 
+/* Estilo para el botón cuando el ratón está encima */
 button:hover{
-    background: #005fa3;
+    background: #005fa3; /* Un azul un poco más oscuro para dar feedback */
 }
 
+/* --- ESTILOS PARA EL NUEVO RESUMEN DE COMPRA --- */
+
+/* Estilos para el contenedor del resumen final */
+.resumen-compra {
+    text-align: right; /* Alinea todo el texto a la derecha */
+    margin-top: 20px; /* Espacio superior para separarlo del botón */
+    border-top: 2px dashed #ccc; /* Línea discontinua arriba */
+    padding-top: 10px; /* Espacio entre la línea y el texto */
+}
+
+/* Estilos para los párrafos dentro del resumen (Subtotal e IVA) */
+.resumen-compra p {
+    font-size: 1.1rem;
+    color: #555; /* Un gris oscuro */
+    margin: 5px 0; /* Pequeño margen vertical */
+}
+
+/* 
+    Estilo específico para el párrafo del Total Final.
+    Como este párrafo tiene la clase 'total', estas reglas se aplican sobre las anteriores.
+    Lo usamos para que el precio final destaque sobre el resto.
+*/
 .total {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #e74c3c;
-    text-align: right;
-    margin-top: 20px;
+    font-size: 1.8rem; /* Letra más grande */
+    font-weight: bold; /* Negrita */
+    color: #e74c3c; /* Un color rojo para llamar la atención */
+    margin-top: 10px !important; /* Más espacio superior para separarlo bien */
 }

@@ -4,16 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caja Registradora</title>
+
+    <!-- 
+        Enlazamos nuestra hoja de estilos (style.css). 
+        El navegador leerá este archivo para saber cómo dibujar y colorear los elementos HTML.
+    -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- 
+        Enlazamos nuestro archivo JavaScript (script.js).
+        El atributo 'defer' es MUY IMPORTANTE: le dice al navegador que espere a que todo el HTML
+        esté cargado antes de ejecutar el JavaScript. Esto evita errores, ya que nuestro script
+        intentará manipular elementos que deben existir primero.
+    -->
     <script src="script.js" defer></script>
 </head>
 <body>
+    <!-- 
+        Este 'div' es el contenedor principal de nuestro ticket. 
+        La clase 'ticket' le permite a CSS encontrarlo y aplicarle estilos (el fondo blanco, la sombra, etc.).
+    -->
     <div class="ticket">
         <h2>🧾 Ticket de Compra</h2>
+        
+        <!-- 
+            Esta es una lista desordenada (<ul>). Inicialmente está vacía.
+            JavaScript la encontrará usando su 'id="lista-producto"' y la rellenará dinámicamente
+            con los productos del carrito.
+        -->
         <ul id="lista-producto"></ul>
+        
+        <!-- 
+            Este es el botón que el usuario pulsará.
+            El atributo 'onclick="cobrar()"' es un evento que le dice al navegador:
+            "Cuando alguien haga clic aquí, ejecuta la función llamada 'cobrar' que está en el archivo script.js".
+        -->
         <button onclick="cobrar()">Calcular Total</button>
-        <p class="total" id="resultado-total">Total: 0.00 €</p>
+        
+        <!-- 
+            Este 'div' es el contenedor para el resumen final de la compra.
+            Lo hemos separado para poder darle un estilo propio y claro.
+        -->
+        <div class="resumen-compra">
+            <!-- 
+                Estos tres párrafos (<p>) son nuestros "marcadores de posición".
+                Cada uno tiene un 'id' único. JavaScript usará estos 'id' para saber
+                exactamente dónde tiene que escribir el subtotal, el IVA y el total final
+                una vez que se hayan calculado en la función 'cobrar()'.
+            -->
+            <p id="subtotal">Subtotal: 0.00 €</p>
+            <p id="iva">IVA (21%): 0.00 €</p>
+            <p class="total" id="total-final">Total: 0.00 €</p>
+        </div>
+        
     </div>
-    
 </body>
 </html>
