@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mi IA SaaS - Panel de Control</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
   </head>
 
   <body>
@@ -30,18 +31,47 @@
         </aside>
 
         <main class="chat-area">
-            
             <header class="chat-header">
                 <h3>Conversación Actual</h3>
             </header>
 
-            <section class="mensajes-container">
-                <div class="mensaje-ia">¡Hola! ¿En qué puedo ayudarte hoy?</div>
-            </section>
+            <!-- ===================================================================== -->
+            <!-- ESTA ES LA ZONA: Ahora contiene TODAS las funcionalidades -->
+            <!-- ===================================================================== -->
+            <div class="controles-filtros">
+                
+                <!-- Barra de Búsqueda (Actividad de hoy) -->
+                <div class="barra-busqueda">
+                    <input type="text" id="input-busqueda" placeholder="Buscar en el chat...">
+                    <button onclick="buscarMensaje()">🔍</button>
+                </div>
+
+                <!-- ===================================================================== -->
+                <!-- BOTÓNES
+                <!-- ===================================================================== -->
+                <div class="filtros-anteriores">
+                    <button onclick="mostrarTodo()">Ver Todo</button>
+                    <button onclick="verMisMensajes()">Mis Mensajes</button>
+                    <button onclick="modoGritar()">Modo Mayúsculas</button>
+                </div>
+                <!-- ===================================================================== -->
+
+                <!-- Botón para Borrar Chat (Actividad de hoy) -->
+                <button class="btn-peligro" onclick="if(confirm('¿Estás seguro de que quieres borrar TODO el historial?')) borrarChat()">
+                    🗑️ Borrar Chat
+                </button>
+            </div>
+            
+            <section class="mensajes-container" id="caja-mensajes"></section>
 
             <footer class="input-area">
-                <form class="chat-form">
-                    <input type="text" placeholder="Escribe tu pregunta aqui ...">
+                <form class="chat-form" onsubmit="enviarPrompt(event)">
+                    <label for="mensaje-input" class="sr-only">Mensaje</label>
+                    <input 
+                        type="text" 
+                        id="mensaje-input" 
+                        placeholder="Escribe tu pregunta aqui ..."
+                        autocomplete="off" >
                     <button type="submit">Enviar</button>
                 </form>
             </footer>
