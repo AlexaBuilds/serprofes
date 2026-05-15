@@ -174,52 +174,47 @@
     left: -9999px;
 }
 
-/* ======================================================== */
-/* 6. NUEVOS ESTILOS PARA LA BÚSQUEDA Y EL BORRADO          */
-/* ======================================================== */
-
-/* Estilo para la nueva barra de búsqueda */
-.barra-busqueda {
-    display: flex; /* Input y botón en línea */
-    align-items: center; /* Centrados verticalmente */
-    background-color: #40414f;
-    border-radius: 5px;
-    padding: 5px;
-    margin-right: 15px; /* Espacio para separarlo del botón de borrar */
+/*Boton Peligro (Borrar)*/
+.controles-filtros .btn-peligro {
+    background-color: #e74c3c;
+    border: 1px solid #c0392b;
 }
 
-.barra-busqueda input {
-    background: transparent;
+.controles-filtros .btn-peligro:hover {
+    background-color: #c0392b;
+}
+
+/*Boton Buscador  */
+.buscador-container {
+    text-align: center;
+    padding: 10px;
+    background-color: #202123;
+    border-bottom: 1px solid #4d4d4f;
+}
+
+.buscador-container input {
+    padding: 8px 15px;
+    border-radius: 4px;
     border: none;
-    color: white;
+    width: 60%;
+    max-width: 400px;
     outline: none;
-    padding: 5px;
+    font-size: 0.95rem;
 }
 
-.barra-busqueda button {
-    background: transparent;
+.buscador-container button {
+    background-color: #19c37d;
+    color: white;
     border: none;
-    color: #a0a0a0;
+    padding: 8px 15px;
+    margin-left: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    font-weight: bold;
+    transition: 0.3s;
 }
-
-/* Estilo para el botón de peligro (Borrar Chat) */
-.btn-peligro {
-    background-color: #d9534f; /* Un color rojo de peligro */
-    border-color: #d43f3a;
-}
-
-.btn-peligro:hover {
-    background-color: #c9302c; /* Un rojo más oscuro al pasar el ratón */
-}
-
-/* Hacemos que la barra de controles sea más flexible */
-.controles-filtros {
-    display: flex;
-    justify-content: center; /* Centra los elementos */
-    align-items: center; /* Los alinea verticalmente */
-    flex-wrap: wrap; /* Permite que pasen a la línea de abajo en pantallas pequeñas */
+.buscador-container button:hover {
+    opacity: 0.9;
 }
 
 /*MAGIA RESPONSIVE - ADAPTANDO EL CHAT A MÓVILES*/

@@ -36,27 +36,19 @@
             </header>
 
             <!-- ===================================================================== -->
-            <!-- ESTA ES LA ZONA: Ahora contiene TODAS las funcionalidades -->
+            <!-- Controles Superiores: Búsqueda y Filtros -->
             <!-- ===================================================================== -->
+            <div class="buscador-container">
+                <input type="text" id="input-busqueda" placeholder="Buscar en el chat...">
+                <button onclick="buscarMensaje()">Buscar</button>
+            </div>
+            
             <div class="controles-filtros">
+                <button onclick="mostrarTodo()">Ver Todo</button>
+                <button onclick="verMisMensajes()">Mis Mensajes</button>
+                <button onclick="modoGritar()">Modo Mayúsculas</button>
                 
-                <!-- Barra de Búsqueda (Actividad de hoy) -->
-                <div class="barra-busqueda">
-                    <input type="text" id="input-busqueda" placeholder="Buscar en el chat...">
-                    <button onclick="buscarMensaje()">🔍</button>
-                </div>
-
-                <!-- ===================================================================== -->
-                <!-- BOTÓNES
-                <!-- ===================================================================== -->
-                <div class="filtros-anteriores">
-                    <button onclick="mostrarTodo()">Ver Todo</button>
-                    <button onclick="verMisMensajes()">Mis Mensajes</button>
-                    <button onclick="modoGritar()">Modo Mayúsculas</button>
-                </div>
-                <!-- ===================================================================== -->
-
-                <!-- Botón para Borrar Chat (Actividad de hoy) -->
+                <!-- El botón de borrar ahora usa la clase "btn-peligro" para el color rojo -->
                 <button class="btn-peligro" onclick="if(confirm('¿Estás seguro de que quieres borrar TODO el historial?')) borrarChat()">
                     🗑️ Borrar Chat
                 </button>
