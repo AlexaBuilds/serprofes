@@ -42,6 +42,35 @@ function pintarChat(listaMensajes){
     caja.scrollTop = caja.scrollHeight;
 }
 
+ /**  // <---
+ * Simula una respuesta inteligente de la IA basada en palabras clave.
+ * @param {string} mensajeUsuario El texto que el usuario ha escrito.
+ * @returns {string} Un texto de respuesta generado por la IA.
+ */
+function generarRespuestaIA(mensajeUsuario) {
+    // Convertimos el mensaje a minúsculas para que la búsqueda no falle
+    // por mayúsculas o minúsculas (ej: "hola" vs "HOLA")
+    const mensaje = mensajeUsuario.toLowerCase();
+ 
+    // 1. Buscamos palabras clave con un IF / ELSE IF
+    if (mensaje.includes("hola") || mensaje.includes("buenos días")) {
+        return "¡Hola! ¿En qué puedo ayudarte hoy?";
+    } 
+    else if (mensaje.includes("javascript") || mensaje.includes("programación")) {
+        return "¡JavaScript es mi tema favorito! ¿Qué quieres saber sobre ello?";
+    }
+    else if (mensaje.includes("tiempo") || mensaje.includes("clima")) {
+        return "Lo siento, no tengo acceso a la información del tiempo en tiempo real. Soy solo una simulación.";
+    }
+    else if (mensaje.includes("adiós") || mensaje.includes("gracias")) {
+        return "¡De nada! Si necesitas algo más, no dudes en preguntar.";
+    }
+    // 2. Si no encuentra ninguna palabra clave, da una respuesta genérica.
+    else {
+        return "No estoy seguro de cómo responder a eso. ¿Puedes preguntármelo de otra manera?";
+    }
+}
+
 // 3. LA FUNCIÓN DE ENVÍO (Lógica)
 function enviarPrompt(event) {
     // Evitamos que la pagina web parpadee y se recargue al enviar el formuario
@@ -62,9 +91,17 @@ function enviarPrompt(event) {
     // a) Guardamos el mensaje real del usuario
     let nuevoMensaje = { rol: "usuario", texto: mensaje};
     historialChat.push(nuevoMensaje);// Lo metemos al final del Array
-    // b) EL TRUCO : Simulamos que la IA nos responde al instante creando otro objeto
-    let respuestaIA = { rol: "ia", texto: "Estoy procesando tu mensaje: '" + mensaje + "'"};
+    
+    // =====================================================================
+    // ¡AQUÍ ESTÁ EL CAMBIO IMPORTANTE!
+    // =====================================================================
+    // b) Llamamos a nuestra nueva función para que genere una respuesta "inteligente"
+    const textoRespuesta = generarRespuestaIA(mensaje); 
+    
+    // Creamos el objeto del mensaje de la IA con esa respuesta
+    let respuestaIA = { rol: "ia", texto: textoRespuesta };
     historialChat.push(respuestaIA);
+    // =====================================================================
 
     // c) Como el array ha cambiado (Tiene dos mensajes más), obligamos a la web repintarse
     pintarChat(historialChat);
