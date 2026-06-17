@@ -1,0 +1,13 @@
+{
+  "name": "node-intro-api",
+  "version": "1.0.0",
+  "description": "API básica con Node.js para serprofes",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "keywords": ["node", "api", "express"],
+  "author": "serprofes",
+  "license": "MIT"
+}

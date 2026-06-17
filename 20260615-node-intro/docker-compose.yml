@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  node-api:
+    image: node:22-alpine
+    container_name: serprofes_node_intro
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=production
+    command: sh -c "npm install && node index.js"
+    restart: unless-stopped
