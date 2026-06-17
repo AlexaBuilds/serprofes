@@ -1,0 +1,24 @@
+### Obtener Profesores
+GET http://localhost:3001/api/profesores
+
+###
+
+### Crear Profesor (ID Automático)
+POST http://localhost:3001/api/profesores
+Content-Type: application/json
+
+{
+  "nombre": "Alex",
+  "asignatura": "Docker"
+}
+
+###
+
+### Crear Estudiante (ID Automático)
+POST http://localhost:3001/api/estudiantes
+Content-Type: application/json
+
+{
+  "nombre": "Laura",
+  "curso": "React"
+}

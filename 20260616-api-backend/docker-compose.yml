@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  students-api:
+    image: node:22-alpine
+    container_name: serprofes_students_api
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3001:3000"
+    command: sh -c "npm install && npm run dev"
