@@ -1,69 +1,115 @@
+<!-- La primera línea, <!doctype html>, le dice al navegador que este documento es una página web moderna (HTML5). -->
 <!doctype html>
+<!-- La etiqueta <html> es el contenedor principal de toda la página. 'lang="es"' le indica que el idioma es español. -->
 <html lang="es">
     
+  <!-- La sección <head> contiene metadatos e información para el navegador, no es visible para el usuario. -->
   <head>
+    <!-- meta charset="UTF-8" asegura que el navegador interprete correctamente todos los caracteres y símbolos, como acentos y la 'ñ'. -->
     <meta charset="UTF-8" />
+    <!-- Esta meta etiqueta es CRUCIAL para el diseño responsive. Hace que la página se adapte al ancho del dispositivo (móvil, tablet, etc.). -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- El <title> es el texto que aparece en la pestaña del navegador. -->
     <title>Mi IA SaaS - Panel de Control</title>
+    
+    <!-- Aquí vinculamos nuestra hoja de estilos CSS, que define todos los colores, tamaños y la disposición de los elementos. -->
     <link rel="stylesheet" href="style.css" />
+    <!-- Y aquí vinculamos nuestro archivo JavaScript. El atributo 'defer' es MUY IMPORTANTE:
+         le ordena al navegador que cargue el HTML primero y el JS justo después.
+         Esto evita errores comunes donde JS intenta buscar un elemento que todavía no se ha dibujado en la página. -->
     <script src="app.js" defer></script>
   </head>
 
+  <!-- El <body> contiene todo el contenido VISIBLE de la página web. -->
   <body>
+    <!-- Este <div> es el contenedor principal de nuestra aplicación. En el CSS, lo usamos con Flexbox para crear el layout de dos columnas. -->
     <div class="app-container">
+        
+        <!-- <aside> es una etiqueta para contenido secundario, perfecto para nuestra barra lateral. -->
         <aside class="sidebar">
             <div class="logo-area">
                 <h2>IA Master</h2>
             </div>
+            
+            <!-- <nav> se usa para agrupar los enlaces de navegación o menús. -->
             <nav class="menu-lateral">
                 <button>+ Nuevo Chat</button>
                 <div class="historial">
                     <p>Historia reciente ...</p>
-                    <ul>
-                        <li>¿Cómo hacer dieta?</li>
-                        <li>Receta de pizza</li>
+                    <!-- ¡ESTA ES UNA MEJORA CLAVE! -->
+                    <!-- Este <ul> (lista desordenada) está vacío al principio. Le hemos puesto un 'id="historial-lista"'.
+                         Este ID actúa como un "anzuelo" o "gancho" para que nuestro JavaScript (en la función 'actualizarHistorialLateral')
+                         pueda encontrar esta lista y meter dinámicamente los títulos de los chats recientes. -->
+                    <ul id="historial-lista">
+                        <!-- El contenido de esta lista se generará 100% desde JavaScript. -->
                     </ul>
                 </div>
             </nav>
+
             <div class="perfil">
                 <span>Usuario Pro</span>
             </div>
         </aside>
 
+        <!-- <main> representa el contenido principal y más importante de la página. En nuestro caso, toda el área del chat. -->
         <main class="chat-area">
+            
+            <!-- <header> para la cabecera de la sección de chat. -->
             <header class="chat-header">
                 <h3>Conversación Actual</h3>
             </header>
 
-            <!-- ===================================================================== -->
-            <!-- Controles Superiores: Búsqueda y Filtros -->
-            <!-- ===================================================================== -->
-            <div class="buscador-container">
-                <input type="text" id="input-busqueda" placeholder="Buscar en el chat...">
-                <button onclick="buscarMensaje()">Buscar</button>
-            </div>
-            
+            <!-- Este contenedor agrupa los botones de filtro. -->
             <div class="controles-filtros">
-                <button onclick="mostrarTodo()">Ver Todo</button>
+                <!-- El atributo 'onclick' es la forma más directa de conectar HTML con JavaScript.
+                     Cuando se hace clic en este botón, se ejecuta la función 'mostrarTodo()' de nuestro archivo app.js. -->
+                <button onclick="mostrarTodo()"> Ver Todo</button>
                 <button onclick="verMisMensajes()">Mis Mensajes</button>
                 <button onclick="modoGritar()">Modo Mayúsculas</button>
                 
-                <!-- El botón de borrar ahora usa la clase "btn-peligro" para el color rojo -->
-                <button class="btn-peligro" onclick="if(confirm('¿Estás seguro de que quieres borrar TODO el historial?')) borrarChat()">
-                    🗑️ Borrar Chat
-                </button>
+                <!-- TU MEJORA DE SEGURIDAD: MANTENEMOS TU 'confirm()'.
+                     Aquí, el 'onclick' ejecuta un pequeño código: un 'if' que muestra una ventana de confirmación.
+                     Solo si el usuario pulsa "Aceptar", se ejecutará la función 'borrarChat()'. -->
+                <button onclick="if(confirm('¿Estás seguro de que quieres borrar TODO el historial?')) borrarChat()" class="btn-peligro">🗑️ Borrar Chat</button>
             </div>
             
+            <!-- Contenedor para la barra de búsqueda. -->
+            <div class="buscador-container">
+                <!-- MEJORA: Unificamos el ID de este input a 'input-buscador'.
+                     Este ID es el "anzuelo" que usa la función 'buscarMensaje()' en JS para saber qué palabra ha escrito el usuario. -->
+                <input type="text" id="input-buscador" placeholder="Buscar palabra en el chat...">
+                <button onclick="buscarMensaje()">🔍 Buscar</button>
+            </div>
+            
+            <!-- ¡LA PIZARRA MÁGICA! -->
+            <!-- Esta sección está vacía al principio. Es el contenedor más importante.
+                 Tiene el 'id="caja-mensajes"', que es el "anzuelo" que nuestra función 'pintarChat()'
+                 usa para encontrar este espacio y dibujar todas las burbujas del chat dentro de él. -->
             <section class="mensajes-container" id="caja-mensajes"></section>
 
+            <!-- <footer> para la parte inferior de la sección, donde está el input para escribir. -->
             <footer class="input-area">
+                <!-- Usamos una etiqueta <form> porque es la forma semántica correcta de agrupar un input y un botón de envío. -->
+                <!-- El atributo 'onsubmit' es el evento clave aquí. Cuando el formulario se envía (al pulsar Enter o hacer clic en el botón),
+                     se ejecuta nuestra función principal 'enviarPrompt(event)'. -->
                 <form class="chat-form" onsubmit="enviarPrompt(event)">
+                    
+                    <!-- La etiqueta <label> es importante para la accesibilidad. El atributo 'for' lo conecta con el 'id' del input.
+                         La clase 'sr-only' (screen-reader-only) lo oculta visualmente, pero los lectores de pantalla para personas con discapacidad visual pueden leerlo. -->
                     <label for="mensaje-input" class="sr-only">Mensaje</label>
+                    
+                    <!-- El <input> donde el usuario escribe su mensaje.
+                         - 'id="mensaje-input"': El "anzuelo" para que JS pueda leer lo que se ha escrito.
+                         - 'placeholder': El texto gris que aparece como pista.
+                         - 'autocomplete="off"': Evita que el navegador sugiera palabras guardadas anteriormente. -->
                     <input 
                         type="text" 
                         id="mensaje-input" 
                         placeholder="Escribe tu pregunta aqui ..."
                         autocomplete="off" >
+                    
+                    <!-- El botón de envío. 'type="submit"' es importante dentro de un <form>,
+                         ya que es lo que activa el evento 'onsubmit' del formulario. -->
                     <button type="submit">Enviar</button>
                 </form>
             </footer>
